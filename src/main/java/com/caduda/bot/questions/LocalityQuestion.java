@@ -10,6 +10,7 @@ public class LocalityQuestion implements Question {
 
     @Override
     public String process() {
-        return "Atalaia";
+        return "Temos uma unidade do Espetinho Caduda no Orlando Dantas na rua Maria Rosa Lima, número 117. " +
+                "E temos também a unidade da Atalaia, localizada na rua Niceu Dantas, número 50.";
     }
 }

@@ -2,14 +2,14 @@ package com.caduda.bot.questions;
 
 import com.caduda.bot.interfaces.Question;
 
-public class BusinessHourQuestion implements Question {
+public class BusinessHoursQuestion implements Question {
     @Override
     public boolean preCondition(String intent) {
-        return intent.equals("BUSINESS_HOUR");
+        return intent.equals("BUSINESS_HOURS");
     }
 
     @Override
     public String process() {
-        return "8h~12h - 13h~18h";
+        return "Funcionamos das 17h às 2h de quarta a sábado!";
     }
 }

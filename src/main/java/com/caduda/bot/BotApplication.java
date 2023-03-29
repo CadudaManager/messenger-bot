@@ -1,10 +1,7 @@
 package com.caduda.bot;
 
-import com.caduda.bot.controller.MessengerWebhookController;
 import com.caduda.bot.interfaces.Question;
-import com.caduda.bot.questions.BusinessHourQuestion;
-import com.caduda.bot.questions.IntentsAndAnswers;
-import com.caduda.bot.questions.LocalityQuestion;
+import com.caduda.bot.questions.*;
 import com.caduda.bot.services.BotService;
 import com.caduda.bot.services.DialogflowService;
 import com.caduda.bot.services.MessengerService;
@@ -31,8 +28,8 @@ public class BotApplication {
 	}
 
 	@Bean
-	public BusinessHourQuestion businessHourQuestion() {
-		return new BusinessHourQuestion();
+	public BusinessHoursQuestion businessHourQuestion() {
+		return new BusinessHoursQuestion();
 	}
 
 	@Bean
@@ -41,13 +38,27 @@ public class BotApplication {
 	}
 
 	@Bean
-	public IntentsAndAnswers questionsAndAnswers(BusinessHourQuestion businessHourQuestion,
-												 LocalityQuestion localityQuestion){
+	public GreetingQuestion greetingQuestion() {
+		return new GreetingQuestion();
+	}
+
+	@Bean
+	public MenuQuestion menuQuestion() {
+		return new MenuQuestion();
+	}
+
+	@Bean
+	public IntentsAndAnswers questionsAndAnswers(BusinessHoursQuestion businessHoursQuestion,
+												 LocalityQuestion localityQuestion,
+												 GreetingQuestion greetingQuestion,
+												 MenuQuestion menuQuestion){
 
 		List<Question> answersAndQuestions = new ArrayList<>();
 
-		answersAndQuestions.add(businessHourQuestion);
+		answersAndQuestions.add(businessHoursQuestion);
 		answersAndQuestions.add(localityQuestion);
+		answersAndQuestions.add(greetingQuestion);
+		answersAndQuestions.add(menuQuestion);
 
 		return new IntentsAndAnswers(answersAndQuestions);
 	}
