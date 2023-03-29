@@ -2,6 +2,7 @@ package com.caduda.bot.services;
 
 import com.caduda.bot.interfaces.NLPInterface;
 import com.caduda.bot.interfaces.Question;
+import com.caduda.bot.questions.IntentsAndAnswers;
 
 import java.util.List;
 
@@ -10,9 +11,9 @@ public class BotService {
     private NLPInterface nlp;
     private List<Question> questions;
 
-    BotService(NLPInterface nlpInterface, List<Question> questions) {
+    public BotService(NLPInterface nlpInterface, IntentsAndAnswers intentsAndAnswers) {
         this.nlp = nlpInterface;
-        this.questions = questions;
+        this.questions = intentsAndAnswers.getQuestionsWithAnswers();
     }
 
     public String getBotAnswer(String userMessage) {

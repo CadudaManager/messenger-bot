@@ -9,14 +9,15 @@ import org.springframework.web.client.RestTemplate;
 public class MessengerService {
 
     @Value("${replyUrl}")
-    private String REPLY_URL;
+    private String replyUrl;
     private BotService botService;
     private RestTemplate restTemplate;
 
-    MessengerService(BotService botService, RestTemplate restTemplate) {
+    public MessengerService(BotService botService, RestTemplate restTemplate) {
         this.botService = botService;
         this.restTemplate = restTemplate;
     }
+
     public void answerUser(ReceivedEventFormatted receivedEventFormatted) {
         String userMessage = receivedEventFormatted.getUserMessage();
 
@@ -30,6 +31,6 @@ public class MessengerService {
 
         HttpEntity<ResponseEvent> entity = new HttpEntity<>(responseEvent);
 
-        restTemplate.postForEntity(REPLY_URL, entity, String.class);
+        restTemplate.postForEntity(replyUrl, entity, String.class);
     }
 }

@@ -29,7 +29,7 @@ public class DialogflowService implements NLPInterface {
     private RestTemplate restTemplate;
     private ObjectMapper objectMapper;
 
-    DialogflowService(RestTemplate restTemplate, ObjectMapper objectMapper) {
+    public DialogflowService(RestTemplate restTemplate, ObjectMapper objectMapper) {
         this.restTemplate = restTemplate;
         this.objectMapper = objectMapper;
     }
@@ -50,6 +50,7 @@ public class DialogflowService implements NLPInterface {
                 DialogflowResponse.class);
 
 
+        assert dialogflowResponse != null;
         return getIntentFromResponse(dialogflowResponse);
     }
 

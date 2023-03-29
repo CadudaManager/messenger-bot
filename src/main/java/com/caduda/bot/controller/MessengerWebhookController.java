@@ -14,15 +14,18 @@ import org.springframework.web.bind.annotation.*;
 public class MessengerWebhookController {
 
     @Value("${validationToken}")
-    private String VALIDATION_TOKEN;
+    private String validationToken;
 
-    @Autowired
     private MessengerService messengerService;
+
+    public MessengerWebhookController(MessengerService messengerService) {
+        this.messengerService = messengerService;
+    }
 
     @GetMapping
     ResponseEntity<Integer> validateWebhook(@RequestParam(value = "hub.verify_token") String verify_token,
                                             @RequestParam(value = "hub.challenge") Integer challenge) {
-        if (verify_token.equals(VALIDATION_TOKEN)) {
+        if (verify_token.equals(validationToken)) {
             return ResponseEntity.ok(challenge);
         } else {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
