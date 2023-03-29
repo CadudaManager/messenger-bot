@@ -13,8 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpHeaders;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.security.interfaces.RSAPrivateKey;
 import java.util.Date;
 
@@ -62,8 +62,9 @@ public class DialogflowService implements NLPInterface {
 
     private String generateSignedJWT() {
         try {
-            FileInputStream stream = new FileInputStream("src/main/resources/googleCredentials.json");
-            ServiceAccountCredentials cred = ServiceAccountCredentials.fromStream(stream);
+            InputStream inputStream = getClass().getResourceAsStream("/googleCredentials.json");
+            assert inputStream != null;
+            ServiceAccountCredentials cred = ServiceAccountCredentials.fromStream(inputStream);
             RSAPrivateKey key = (RSAPrivateKey) cred.getPrivateKey();
             Algorithm algorithm = Algorithm.RSA256(null, key);
 
@@ -80,8 +81,7 @@ public class DialogflowService implements NLPInterface {
                     .sign(algorithm);
 
         } catch (IOException ex) {
-            System.out.println("Erro ao tentar importar credenciais -> " + ex.getMessage());
-            return "";
+            throw new RuntimeException(ex.getMessage());
         }
     }
 }
