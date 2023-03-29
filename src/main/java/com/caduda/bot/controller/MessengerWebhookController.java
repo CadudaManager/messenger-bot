@@ -3,7 +3,6 @@ package com.caduda.bot.controller;
 import com.caduda.bot.messenger.MessengerEvent;
 import com.caduda.bot.messenger.ReceivedEventFormatted;
 import com.caduda.bot.services.MessengerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +32,7 @@ public class MessengerWebhookController {
     }
 
     @PostMapping
-    ResponseEntity<String> receiveEvent(MessengerEvent messengerEvent) {
+    ResponseEntity<String> receiveEvent(@RequestBody MessengerEvent messengerEvent) {
         ReceivedEventFormatted receivedEventFormatted = new ReceivedEventFormatted(messengerEvent);
 
         messengerService.answerUser(receivedEventFormatted);

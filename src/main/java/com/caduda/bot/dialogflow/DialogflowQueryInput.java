@@ -10,4 +10,15 @@ public class DialogflowQueryInput {
         text.put("text", userMessage);
         text.put("language_code", "pt-BR");
     }
+
+    public Map<String, String> getText() {
+        return text;
+    }
+
+    @Override
+    public String toString() {
+        return "DialogflowQueryInput{" +
+                "text=" + text +
+                '}';
+    }
 }

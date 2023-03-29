@@ -62,7 +62,7 @@ public class DialogflowService implements NLPInterface {
 
     private String generateSignedJWT() {
         try {
-            FileInputStream stream = new FileInputStream("src/main/resources/googleCredentials");
+            FileInputStream stream = new FileInputStream("src/main/resources/googleCredentials.json");
             ServiceAccountCredentials cred = ServiceAccountCredentials.fromStream(stream);
             RSAPrivateKey key = (RSAPrivateKey) cred.getPrivateKey();
             Algorithm algorithm = Algorithm.RSA256(null, key);

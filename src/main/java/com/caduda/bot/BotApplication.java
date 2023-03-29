@@ -64,12 +64,14 @@ public class BotApplication {
 	}
 
 	@Bean
-    public BotService botService(RestTemplate restTemplate,
-								 ObjectMapper objectMapper,
+	public DialogflowService dialogflowService(RestTemplate restTemplate, ObjectMapper objectMapper) {
+		return new DialogflowService(restTemplate, objectMapper);
+	}
+
+	@Bean
+    public BotService botService(DialogflowService dialogflowService,
 								 IntentsAndAnswers intentsAndAnswers) {
-
-
-        return new BotService(new DialogflowService(restTemplate, objectMapper), intentsAndAnswers);
+        return new BotService(dialogflowService, intentsAndAnswers);
     }
 
 	@Bean
