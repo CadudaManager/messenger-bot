@@ -1,4 +1,4 @@
 FROM openjdk:17-alpine
-EXPOSE 80
+EXPOSE 8080
 COPY . .
 RUN ./gradlew clean build
