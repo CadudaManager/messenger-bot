@@ -4,10 +4,4 @@ services:
     container_name: bot_app
     build: .
     ports:
-        - "8080:8080"
-  web:
-    image: nginx:alpine
-    ports:
-      - "8000:80"
-    volumes:
-      - ./app:/usr/share/nginx/html
+        - "80:8080"
