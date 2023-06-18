@@ -57,7 +57,7 @@ public class DialogflowService implements NLPInterface {
     private String getIntentFromResponse(DialogflowResponse dialogflowResponse) {
         DialogflowQueryResult dialogflowQueryResult = dialogflowResponse.queryResult();
         DialogflowIntent dialogflowIntent = dialogflowQueryResult.getIntent();
-        return dialogflowIntent.displayName();
+        return dialogflowIntent != null ? dialogflowIntent.displayName() : "";
     }
 
     private String generateSignedJWT() {
