@@ -4,4 +4,4 @@ services:
     container_name: bot_app
     build: .
     ports:
-        - "80:8080"
+        - "8080:8080"
