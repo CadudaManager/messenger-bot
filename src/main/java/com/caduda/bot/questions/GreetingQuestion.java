@@ -21,13 +21,13 @@ public class GreetingQuestion implements Question {
         int currentTime = localDateTime.getHour();
 
         if (currentTime >= 0 && currentTime < 6) {
-            return "Olá!! Boa madrugada!! Em que posso ajudar??";
+            return "Olá!! Boa madrugada!! Em que posso ajudar?? \n\n(/help para ajuda)";
         } else if (currentTime >= 6 && currentTime < 12) {
-            return "Olá!! Bom dia!! Em que posso ajudar??";
+            return "Olá!! Bom dia!! Em que posso ajudar?? \n\n(/help para ajuda)";
         } else if (currentTime >= 12 && currentTime < 18) {
-            return "Olá!! Boa tarde!! Em que posso ajudar??";
+            return "Olá!! Boa tarde!! Em que posso ajudar?? \n\n(/help para ajuda)";
         } else {
-            return "Olá!! Boa noite!! Em que posso ajudar??";
+            return "Olá!! Boa noite!! Em que posso ajudar?? \n\n(/help para ajuda)";
         }
     }
 }
